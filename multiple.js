@@ -47,7 +47,7 @@ document.fonts.ready.then(() => {
     items.forEach((item, i) => {
         const container = item.parentElement;
         container.dataset.id = i; // unique id for keyframes
-        //setupItem(container, item);
+        //setupItem(container, item); //shouldn't be needeed because RO will trigger it immediately
 
         // handle resizing dynamically
         const ro = new ResizeObserver(() => setupItem(container, item));
