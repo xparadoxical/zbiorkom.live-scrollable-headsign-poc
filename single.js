@@ -1,4 +1,5 @@
-const SPEED = 40; // px/sec
+const speedInput = document.querySelector('#speed');
+let SPEED = parseFloat(speedInput.value); // px/sec
 const PAUSE = 2;  // seconds
 const item = document.querySelector('.item');
 const container = item.parentElement;
@@ -40,6 +41,15 @@ function setupItem(container, item) {
     // apply animation
     item.style.animation = `${animationName} ${totalDuration}s linear infinite`;
 }
+
+// handle speed changes
+const speedDisplay = document.querySelector('span');
+speedDisplay.textContent = SPEED;
+speedInput.addEventListener('input', (e) => {
+    SPEED = parseFloat(e.target.value);
+    speedDisplay.textContent = SPEED;
+    setupItem(container, item);
+});
 
 // initialize item when the font has loaded (to get correct measurements)
 document.fonts.ready.then(() => {
